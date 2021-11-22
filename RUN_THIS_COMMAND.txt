@@ -1,0 +1,1 @@
+python spatial_cnn.py --resume SpatialNetwork/model_best.pth.tar --evaluate

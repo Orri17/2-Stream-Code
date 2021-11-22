@@ -1,0 +1,38 @@
+- Segja þeim að þetta virkar allt en ég skil ekki hvað er átt við með að þetta er bara að evaluatea datasettið, mér finnst eins
+  og ég sé að traina það meira, ég valdi 40 epochs bara til að geta náð að runna kóðann á skikkanlegum tíma
+
+- Sýna þeim csv fileinn með train og test accuracyinu
+
+- Segja þeim að ég vilji ná að sjá accuracyið fyrir hvern og einn category, kannski er það í kóðanum en á bara eftir að finna það
+
+- Sýna þeim frame_count.pickle fileinn, hann held ég segir bara hversu margir frames eru í hverju myndbandi
+
+- Undir UCF_list foldernum þá eru:
+	- ClassInd.txt sem segir hvað labelið er á hverju myndbandi
+	- testlist01/02/03 Eru þau myndbönd sem eru í test settinu
+	- trainlist01/02/03 Eru þau myndbönd sem eru í train settinu.
+
+- Veit ekki ennþá hvað spatial_video_preds.pickle er, líklega er það eitthvað sem segir til um predictionið
+  á hverju og einu myndbandi. Er það rétt? (undir record -> spatial) Hvernig nota ég pickle file?
+
+- Núna þyrfti ég bara að setja saman nokkur myndbönd af fiskinum og bæta því við í datasettið mitt og gefa þeim labels
+  og prófa að runna það með kóðanum. Eru þið með góða hugmynd um hvernig ég eigi að bæði skipta myndböndunum upp í individual ramma
+  og að minnka þá niður í þá stærð sem þarf?
+
+- Síðan þyrfti ég líka að skipta myndböndunum af fisknum/rækjunni í hluta þar sem er enginn fiskur eða engin rækja
+  og líka tala um þetta með að í þessu datasetti þá er alltaf bara eitt action í gangi í einu, þannig ef þú ert með
+  eitt myndband þá ertu bara með til dæmis handstand pushup eða bara apply make up osfrv. en í fiskamyndböndunum okkar
+  þá gætiru verið með marga fiska í einu og þeir gætu verið með mismunandi reactions og með mismunandi "labels". Hvernig myndum við
+  "laga" þetta?
+
+- Þarf að komast inn á Auði og setja upp Virtual environments þar, annarsvegar með því setuppi sem ég er með heima og hinsvegar
+  með python 2 sem ætti að virka með upprunalega kóðanum
+
+- Það þarf að downloada öllu datasettinu og unzippa það saman.
+
+- Segja þeim að ég er bara búinn að implementa spatial networkið, hitt ætti að vera auðvelt fyrst ég er búinn að klára spatial
+  en þá þarf ég að downloada hinu datasettinu.
+
+- Downloada gitlens
+
+- Skoða weights and biases
