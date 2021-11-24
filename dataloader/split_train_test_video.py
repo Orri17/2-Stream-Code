@@ -8,7 +8,7 @@ class UCF101_splitter():
 
     def get_action_index(self):
         self.action_label={}
-        with open(self.path+'/classInd.txt') as f:
+        with open(self.path+'classInd.txt') as f:
             content = f.readlines()
             content = [x.strip('\r\n') for x in content]
         f.close()
