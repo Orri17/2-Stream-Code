@@ -1,1 +1,4 @@
 python spatial_cnn.py --resume SpatialNetwork/model_best.pth.tar --evaluate
+
+
+python motion_cnn.py --resume MotionNetwork/model_best.pth.tar --evaluate

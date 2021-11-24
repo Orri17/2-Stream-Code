@@ -20,8 +20,8 @@ from .split_train_test_video import *
 class motion_dataset(Dataset):  
     def __init__(self, dic, in_channel, root_dir, mode, transform=None):
         #Generate a 16 Frame clip
-        self.keys=dic.keys()
-        self.values=dic.values()
+        self.keys=list(dic.keys())
+        self.values=list(dic.values())
         self.root_dir = root_dir
         self.transform = transform
         self.mode=mode
@@ -31,8 +31,8 @@ class motion_dataset(Dataset):
 
     def stackopf(self):
         name = 'v_'+self.video
-        u = self.root_dir+ 'u/' + name
-        v = self.root_dir+ 'v/'+ name
+        u = self.root_dir+ '/u/' + name
+        v = self.root_dir+ '/v/'+ name
         
         flow = torch.FloatTensor(2*self.in_channel,self.img_rows,self.img_cols)
         i = int(self.clips_idx)
@@ -102,7 +102,7 @@ class Motion_DataLoader():
         
     def load_frame_count(self):
         #print '==> Loading frame number of each video'
-        with open('dic/frame_count.pickle','rb') as file:
+        with open('dataloader/dic/frame_count.pickle','rb') as file:
             dic_frame = pickle.load(file)
         file.close()
 

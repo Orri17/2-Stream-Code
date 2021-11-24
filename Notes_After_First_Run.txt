@@ -36,3 +36,15 @@
 - Downloada gitlens
 
 - Skoða weights and biases
+
+- Búa til Virtual Environments í Auði
+
+- Búa til Confusion matrix úr spatial_video_preds.pickle fileinum
+
+- Koma motion_cnn.py í gang
+
+- Reyna að finna út úr því hvernig motion og spatial er splæst saman
+
+- Spurja hvort það sé hægt að nota þetta X (grafík dótið í Auði) til þess að fara inn í datasettið og opna myndir
+
+- Downloada linux subsystem í tölvuna mína, sama með ubuntu, eitthvað WSL

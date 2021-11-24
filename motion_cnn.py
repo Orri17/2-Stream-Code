@@ -2,7 +2,7 @@ import numpy as np
 import pickle
 from PIL import Image
 import time
-import tqdm
+from tqdm import tqdm
 import shutil
 from random import randint
 import argparse
@@ -24,8 +24,10 @@ import dataloader
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 parser = argparse.ArgumentParser(description='UCF101 motion stream on resnet101')
-parser.add_argument('--epochs', default=500, type=int, metavar='N', help='number of total epochs')
-parser.add_argument('--batch-size', default=64, type=int, metavar='N', help='mini-batch size (default: 64)')
+#parser.add_argument('--epochs', default=500, type=int, metavar='N', help='number of total epochs')
+parser.add_argument('--epochs', default=40, type=int, metavar='N', help='number of total epochs')
+#parser.add_argument('--batch-size', default=64, type=int, metavar='N', help='mini-batch size (default: 64)')
+parser.add_argument('--batch-size', default=32, type=int, metavar='N', help='mini-batch size (default: 64)')
 parser.add_argument('--lr', default=1e-2, type=float, metavar='LR', help='initial learning rate')
 parser.add_argument('--evaluate', dest='evaluate', action='store_true', help='evaluate model on validation set')
 parser.add_argument('--resume', default='', type=str, metavar='PATH', help='path to latest checkpoint (default: none)')
@@ -34,14 +36,16 @@ parser.add_argument('--start-epoch', default=0, type=int, metavar='N', help='man
 def main():
     global arg
     arg = parser.parse_args()
-    print arg
+    print(arg)
 
     #Prepare DataLoader
     data_loader = dataloader.Motion_DataLoader(
                         BATCH_SIZE=arg.batch_size,
                         num_workers=8,
-                        path='/home/ubuntu/data/UCF101/tvl1_flow/',
-                        ucf_list='/home/ubuntu/cvlab/pytorch/ucf101_two_stream/github/UCF_list/',
+                        #path='/home/ubuntu/data/UCF101/tvl1_flow/',
+                        path='D:/DataSets_Lokaverkefni/ucf101_tvl1_flow/tvl1_flow',
+                        #ucf_list='/home/ubuntu/cvlab/pytorch/ucf101_two_stream/github/UCF_list/',
+                        ucf_list = 'C:/Users/Orri Steinn/OneDrive - Reykjavik University/Lokaverkefni/Two-Stream Network/two-stream-action-recognition-master/two-stream-action-recognition-master/UCF_list/',
                         ucf_split='01',
                         in_channel=10,
                         )
@@ -83,7 +87,10 @@ class Motion_CNN():
     def build_model(self):
         print ('==> Build model and setup loss and optimizer')
         #build model
-        self.model = resnet101(pretrained= True, channel=self.channel).cuda()
+        self.model = resnet101(pretrained= True, channel=self.channel).cuda() #Fékk Cuda errorinn á þessari línu, breytti henni eins og hún er í spatial_cnn en virkar ekki
+        #Hvað þýðir channel 3 og hvað þýðir self.channel, afhverju virkar það í spatial_cnn?
+        #self.model = resnet101(pretrained= True, channel=3).cuda() # Þessi lína er eins og þetta er í spatial_cnn
+
         #print self.model
         #Loss function and optimizer
         self.criterion = nn.CrossEntropyLoss().cuda()
@@ -151,7 +158,8 @@ class Motion_CNN():
             # measure data loading time
             data_time.update(time.time() - end)
             
-            label = label.cuda(async=True)
+            #label = label.cuda(async=True)
+            label = label.cuda(device=None, non_blocking=False)
             input_var = Variable(data).cuda()
             target_var = Variable(label).cuda()
 
@@ -199,9 +207,12 @@ class Motion_CNN():
         for i, (keys,data,label) in enumerate(progress):
             
             #data = data.sub_(127.353346189).div_(14.971742063)
-            label = label.cuda(async=True)
-            data_var = Variable(data, volatile=True).cuda(async=True)
-            label_var = Variable(label, volatile=True).cuda(async=True)
+            #label = label.cuda(async=True)
+            label = label.cuda(device=None, non_blocking=False)
+            #data_var = Variable(data, volatile=True).cuda(async=True)
+            #label_var = Variable(label, volatile=True).cuda(async=True)
+            data_var = Variable(data, volatile=True).cuda(device=None, non_blocking=False)
+            label_var = Variable(label, volatile=True).cuda(device=None, non_blocking=False)
 
             # compute output
             output = self.model(data_var)
