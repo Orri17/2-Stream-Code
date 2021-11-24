@@ -23,7 +23,7 @@ class spatial_dataset(Dataset):
         The_Zeros = str(index).zfill(6)
         if video_name.split('_')[0] == 'HandstandPushups':
             n,g = video_name.split('_',1)
-            name = 'HandStandPushups_'+g
+            name = 'HandstandPushups_'+g
             path = self.root_dir +'/v_'+name+'/frame'+The_Zeros
         else:
             path = self.root_dir +'/v_' +video_name+'/frame'+The_Zeros
@@ -89,7 +89,7 @@ class spatial_dataloader():
         for line in dic_frame :
             videoname = line.split('_',1)[1].split('.',1)[0]
             n,g = videoname.split('_',1)
-            if n == 'HandStandPushups':
+            if n == 'HandstandPushups':
                 videoname = 'HandstandPushups_'+ g
             self.frame_count[videoname]=dic_frame[line]
 
