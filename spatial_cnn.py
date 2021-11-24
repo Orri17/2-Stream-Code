@@ -42,9 +42,10 @@ def main():
                         BATCH_SIZE=arg.batch_size,
                         num_workers=8,
                         #path='/home/ubuntu/data/UCF101/spatial_no_sampled/',
-                        path='D:/DataSets_Lokaverkefni/jpgziptest/ucf101_jpegs_256/jpegs_256/',
+                        path='D:/DataSets_Lokaverkefni/jpgziptest/ucf101_jpegs_256/jpegs_256/', # HEIMA
                         #ucf_list ='/home/ubuntu/cvlab/pytorch/ucf101_two_stream/github/UCF_list/',
-                        ucf_list = 'C:/Users/Orri Steinn/OneDrive - Reykjavik University/Lokaverkefni/Two-Stream Network/two-stream-action-recognition-master/two-stream-action-recognition-master/UCF_list/',
+                        #ucf_list = 'C:/Users/Orri Steinn/OneDrive - Reykjavik University/Lokaverkefni/Two-Stream Network/two-stream-action-recognition-master/two-stream-action-recognition-master/UCF_list/', # HEIMA
+                        ucf_list = '/home/orri17/Two-Stream-Network/2-Stream-Code/UCF_list', # AUÐUR
                         ucf_split ='01', 
                         )
     
