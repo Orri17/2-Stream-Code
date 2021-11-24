@@ -23,9 +23,9 @@ class UCF101_splitter():
         for path,subdir,files in os.walk(self.path):
             for filename in files:
                 if filename.split('.')[0] == 'trainlist'+self.split:
-                    train_video = self.file2_dic(self.path+filename)
+                    train_video = self.file2_dic(self.path+'/'+filename)
                 if filename.split('.')[0] == 'testlist'+self.split:
-                    test_video = self.file2_dic(self.path+filename)
+                    test_video = self.file2_dic(self.path+'/'+filename)
         print('==> (Training video, Validation video):(', len(train_video),len(test_video),')')
         self.train_video = self.name_HandstandPushups(train_video)
         self.test_video = self.name_HandstandPushups(test_video)
