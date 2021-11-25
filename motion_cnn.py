@@ -43,9 +43,11 @@ def main():
                         BATCH_SIZE=arg.batch_size,
                         num_workers=8,
                         #path='/home/ubuntu/data/UCF101/tvl1_flow/',
-                        path='D:/DataSets_Lokaverkefni/ucf101_tvl1_flow/tvl1_flow',
+                        #path='D:/DataSets_Lokaverkefni/ucf101_tvl1_flow/tvl1_flow', #HEIMA
+                        path='/mnt/bigdata/orri17/tvl1_flow', #AUÐUR
                         #ucf_list='/home/ubuntu/cvlab/pytorch/ucf101_two_stream/github/UCF_list/',
-                        ucf_list = 'C:/Users/Orri Steinn/OneDrive - Reykjavik University/Lokaverkefni/Two-Stream Network/two-stream-action-recognition-master/two-stream-action-recognition-master/UCF_list/',
+                        #ucf_list = 'C:/Users/Orri Steinn/OneDrive - Reykjavik University/Lokaverkefni/Two-Stream Network/two-stream-action-recognition-master/two-stream-action-recognition-master/UCF_list/', #HEIMA
+                        ucf_list = '/home/orri17/Two-Stream-Network/2-Stream-Code/UCF_list', # AUÐUR
                         ucf_split='01',
                         in_channel=10,
                         )
