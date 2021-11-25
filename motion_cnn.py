@@ -190,9 +190,9 @@ class Motion_CNN():
         info = {'Epoch':[self.epoch],
                 'Batch Time':[round(batch_time.avg,3)],
                 'Data Time':[round(data_time.avg,3)],
-                'Loss':[np.round(losses.avg,5)],
-                'Prec@1':[np.round(top1.avg,4)],
-                'Prec@5':[np.round(top5.avg,4)],
+                'Loss':[np.round(losses.avg.cpu(),5)],
+                'Prec@1':[np.round(top1.avg.cpu(),4)],
+                'Prec@5':[np.round(top5.avg.cpu(),4)],
                 'lr': self.optimizer.param_groups[0]['lr']
                 }
         record_info(info, 'record/motion/opf_train.csv','train')
