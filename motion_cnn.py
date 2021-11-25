@@ -190,9 +190,9 @@ class Motion_CNN():
         info = {'Epoch':[self.epoch],
                 'Batch Time':[round(batch_time.avg,3)],
                 'Data Time':[round(data_time.avg,3)],
-                'Loss':[round(losses.avg,5)],
-                'Prec@1':[round(top1.avg,4)],
-                'Prec@5':[round(top5.avg,4)],
+                'Loss':[np.round(losses.avg,5)],
+                'Prec@1':[np.round(top1.avg,4)],
+                'Prec@5':[np.round(top5.avg,4)],
                 'lr': self.optimizer.param_groups[0]['lr']
                 }
         record_info(info, 'record/motion/opf_train.csv','train')
@@ -239,7 +239,7 @@ class Motion_CNN():
         video_top1, video_top5, video_loss = self.frame2_video_level_accuracy()
         info = {'Epoch':[self.epoch],
                 'Batch Time':[round(batch_time.avg,3)],
-                'Loss':[round(video_loss,5)],
+                'Loss':[np.round(video_loss,5)],
                 'Prec@1':[round(video_top1,3)],
                 'Prec@5':[round(video_top5,3)]
                 }
