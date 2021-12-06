@@ -19,7 +19,8 @@ if __name__ == '__main__':
 
     dataloader = dataloader.spatial_dataloader(BATCH_SIZE=1, num_workers=1, 
                                     path='/home/ubuntu/data/UCF101/spatial_no_sampled/', 
-                                    ucf_list='/home/ubuntu/cvlab/pytorch/ucf101_two_stream/github/UCF_list/',
+                                    #ucf_list='/home/ubuntu/cvlab/pytorch/ucf101_two_stream/github/UCF_list/',
+                                    ucf_list = '/home/orri17/Two-Stream-Network/2-Stream-Code/UCF_list', # AUÐUR
                                     ucf_split='01')
     train_loader,val_loader,test_video = dataloader.run()
 
